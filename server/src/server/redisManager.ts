@@ -1,5 +1,6 @@
 import ProcessManager from './processManager'
 import { SelvaClient, ServerType } from '@saulx/selva'
+import { createClient } from 'redis'
 
 export default class RedisManager extends ProcessManager {
   private redisPort: number
@@ -60,7 +61,6 @@ export default class RedisManager extends ProcessManager {
 
       if (info && typeof info === 'string') {
         const infoLines = info.split('\r\n')
-
 
         const redisInfo = infoLines.reduce((acc, line) => {
           if (line.startsWith('#')) {
